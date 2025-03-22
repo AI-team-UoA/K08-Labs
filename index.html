@@ -24,8 +24,24 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns */
+      gap: 2rem;
+    }
     .team-member {
-      margin-bottom: 1.5rem;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
     }
     .quote {
       font-style: italic;
@@ -39,48 +55,87 @@
 <body>
 
   <header>
-    <h1>Welcome to the Data Structures Lab</h1>
+    <h1>K08 Labs: Data Structures and Programming Techniques (Even-numbered IDs)</h1>
   </header>
 
   <section id="about">
-    <h2>What We Do</h2>
-    <p>We teach students practical and theoretical knowledge of data structures through hands-on lab exercises. Our mission is to foster a deeper understanding of algorithms and data management techniques that are essential for solving real-world problems.</p>
+    <h2>About</h2>
+    <p>This webpage concerns the Labarotories of the <a href="https://cgi.di.uoa.gr/~k08/">K08 Data Structures and Programming Techniques</a> undergraduate course of the 
+        <a href="https://www.di.uoa.gr/">Department of Informatics and Telecommunications</a> of the <a href="https://www.uoa.gr/">University of Athens</a> for .</p>
+    The goal of the Labs is to help students practice developing Data Structures that have been taught in the course's lectures. 
+    In addition, we showcase and use a variety of programming tools and techniques.
   </section>
 
   <section id="curriculum">
     <h2>Lab Curriculum</h2>
     <ul>
-      <li>Week 1: Introduction to Data Structures</li>
-      <li>Week 2: Arrays and Linked Lists</li>
-      <li>Week 3: Stacks and Queues</li>
-      <li>Week 4: Trees and Graphs</li>
-      <li>Week 5: Sorting Algorithms</li>
-      <li>Week 6: Searching Algorithms</li>
-      <li>Week 7: Advanced Data Structures</li>
+      <li>Lab 0: Introductions and Git</li>
+      <li>Lab 1: C Recap</li>
+      <li>Lab 2: Modules/Unit tests/Makefiles & Linked-lists</li>
+      <li>Lab 3: Vectors</li>
+      <li>Lab 4: Valgrind</li>
+      <li>Lab 5: Binary Search Trees</li>
+      <li>Lab 6: Hashtables</li>
+      <li>Lab 7: Bloom Filters</li>
+      <li>Bonus: Generic Data Structures in C and C++</li>
     </ul>
   </section>
 
   <section id="team">
-    <h2>Meet Our Team</h2>
 
-    <div class="team-member">
-      <h3>John Doe</h3>
-      <p><strong>Years of Service:</strong> 3</p>
-      <p class="quote">"Teaching is the best way to learn." - John</p>
+    <h2>Our Team</h2>
+    <div class="team-members">
+      <div class="team-member">
+        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="John Doe">
+        <h3>John Doe</h3>
+        <p><strong>Years of Service:</strong> 3</p>
+        <p class="quote">"Teaching is the best way to learn." - John</p>
+      </div>
+
+      <div class="team-member">
+        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Jane Smith">
+        <h3>Jane Smith</h3>
+        <p><strong>Years of Service:</strong> 5</p>
+        <p class="quote">"A great teacher inspires curiosity in students." - Jane</p>
+      </div>
+
+      <div class="team-member">
+        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Mark Lee">
+        <h3>Mark Lee</h3>
+        <p><strong>Years of Service:</strong> 2</p>
+        <p class="quote">"In data structures, the simplicity of an idea can unlock immense power." - Mark</p>
+      </div>
+      
+      <!-- Additional team members can go here in similar structure -->
     </div>
 
-    <div class="team-member">
-      <h3>Jane Smith</h3>
-      <p><strong>Years of Service:</strong> 5</p>
-      <p class="quote">"A great teacher inspires curiosity in students." - Jane</p>
+    <h2>Former Team Members</h2>
+    <div class="team-members">
+      <div class="team-member">
+        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="John Doe">
+        <h3>John Doe</h3>
+        <p><strong>Years of Service:</strong> 3</p>
+        <p class="quote">"Teaching is the best way to learn." - John</p>
+      </div>
+
+      <div class="team-member">
+        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Jane Smith">
+        <h3>Jane Smith</h3>
+        <p><strong>Years of Service:</strong> 5</p>
+        <p class="quote">"A great teacher inspires curiosity in students." - Jane</p>
+      </div>
+
+      <div class="team-member">
+        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Mark Lee">
+        <h3>Mark Lee</h3>
+        <p><strong>Years of Service:</strong> 2</p>
+        <p class="quote">"In data structures, the simplicity of an idea can unlock immense power." - Mark</p>
+      </div>
+
+      <!-- Additional team members can go here in similar structure -->
     </div>
 
-    <div class="team-member">
-      <h3>Mark Lee</h3>
-      <p><strong>Years of Service:</strong> 2</p>
-      <p class="quote">"In data structures, the simplicity of an idea can unlock immense power." - Mark</p>
-    </div>
   </section>
-
+  
 </body>
 </html>
