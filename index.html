@@ -4,138 +4,376 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Structures Lab</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
     }
-    header {
-      background-color: #333;
+    .hero-section {
+      background-color: #343a40;
       color: white;
-      padding: 1rem;
-      text-align: center;
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+      position: relative;
     }
-    section {
-      padding: 2rem;
-      margin: 1rem;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .hero-section::after {
+      content: "";
+      background: url('https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg');
+      opacity: 0.1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
     }
-    .team-members {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columns */
-      gap: 2rem;
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
-    .team-member {
-      text-align: center;
-      background-color: #f9f9f9;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 1.5rem;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-    .team-member img {
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .team-img {
       width: 150px;
       height: 150px;
       object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 1rem;
+      margin: 0 auto 1rem;
+      border: 4px solid #f8f9fa;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     .quote {
       font-style: italic;
-      color: #555;
+      color: #6c757d;
     }
-    .team-member h3 {
-      margin: 0.5rem 0;
+    .section-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background-color: #007bff;
+      bottom: 0;
+      left: 0;
+    }
+    .list-group-item {
+      border-left: 3px solid #007bff;
+      margin-bottom: 5px;
+      border-radius: 0.25rem;
+    }
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+    .team-row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .team-col {
+      width: 33.333%;
+      padding: 0 15px;
+    }
+    @media (max-width: 991.98px) {
+      .team-col {
+        width: 50%;
+      }
+    }
+    @media (max-width: 575.98px) {
+      .team-col {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>K08 Labs: Data Structures and Programming Techniques (Even-numbered IDs)</h1>
-  </header>
-
-  <section id="about">
-    <h2>About</h2>
-    <p>This webpage concerns the Labarotories of the <a href="https://cgi.di.uoa.gr/~k08/">K08 Data Structures and Programming Techniques</a> undergraduate course of the 
-        <a href="https://www.di.uoa.gr/">Department of Informatics and Telecommunications</a> of the <a href="https://www.uoa.gr/">University of Athens</a> for .</p>
-    The goal of the Labs is to help students practice developing Data Structures that have been taught in the course's lectures. 
-    In addition, we showcase and use a variety of programming tools and techniques.
-  </section>
-
-  <section id="curriculum">
-    <h2>Lab Curriculum</h2>
-    <ul>
-      <li>Lab 0: Introductions and Git</li>
-      <li>Lab 1: C Recap</li>
-      <li>Lab 2: Modules/Unit tests/Makefiles & Linked-lists</li>
-      <li>Lab 3: Vectors</li>
-      <li>Lab 4: Valgrind</li>
-      <li>Lab 5: Binary Search Trees</li>
-      <li>Lab 6: Hashtables</li>
-      <li>Lab 7: Bloom Filters</li>
-      <li>Bonus: Generic Data Structures in C and C++</li>
-    </ul>
-  </section>
-
-  <section id="team">
-
-    <h2>Our Team</h2>
-    <div class="team-members">
-      <div class="team-member">
-        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="John Doe">
-        <h3>John Doe</h3>
-        <p><strong>Years of Service:</strong> 3</p>
-        <p class="quote">"Teaching is the best way to learn." - John</p>
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">K08 Labs</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#curriculum">Curriculum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#former-team">Former Members</a>
+          </li>
+        </ul>
       </div>
-
-      <div class="team-member">
-        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Jane Smith">
-        <h3>Jane Smith</h3>
-        <p><strong>Years of Service:</strong> 5</p>
-        <p class="quote">"A great teacher inspires curiosity in students." - Jane</p>
-      </div>
-
-      <div class="team-member">
-        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Mark Lee">
-        <h3>Mark Lee</h3>
-        <p><strong>Years of Service:</strong> 2</p>
-        <p class="quote">"In data structures, the simplicity of an idea can unlock immense power." - Mark</p>
-      </div>
-      
-      <!-- Additional team members can go here in similar structure -->
     </div>
+  </nav>
 
-    <h2>Former Team Members</h2>
-    <div class="team-members">
-      <div class="team-member">
-        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="John Doe">
-        <h3>John Doe</h3>
-        <p><strong>Years of Service:</strong> 3</p>
-        <p class="quote">"Teaching is the best way to learn." - John</p>
-      </div>
-
-      <div class="team-member">
-        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Jane Smith">
-        <h3>Jane Smith</h3>
-        <p><strong>Years of Service:</strong> 5</p>
-        <p class="quote">"A great teacher inspires curiosity in students." - Jane</p>
-      </div>
-
-      <div class="team-member">
-        <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Mark Lee">
-        <h3>Mark Lee</h3>
-        <p><strong>Years of Service:</strong> 2</p>
-        <p class="quote">"In data structures, the simplicity of an idea can unlock immense power." - Mark</p>
-      </div>
-
-      <!-- Additional team members can go here in similar structure -->
+  <!-- Hero Section -->
+  <section class="hero-section text-center">
+    <div class="container hero-content">
+      <h1 class="display-4">Data Structures and Programming Techniques</h1>
+      <p class="lead">K08 Labs (Even-numbered IDs)</p>
+      <a href="https://cgi.di.uoa.gr/~k08/" class="btn btn-primary mt-3">
+        <i class="fas fa-external-link-alt me-2"></i>Course Website
+      </a>
     </div>
-
   </section>
-  
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <div class="row">
+        <div class="col-lg-8">
+          <p class="lead">
+            This webpage concerns the Laboratories of the <a href="https://cgi.di.uoa.gr/~k08/">K08 Data Structures and Programming Techniques</a> 
+            undergraduate course of the <a href="https://www.di.uoa.gr/">Department of Informatics and Telecommunications</a> 
+            of the <a href="https://www.uoa.gr/">University of Athens</a>.
+          </p>
+          <p>
+            The goal of the Labs is to help students practice developing Data Structures that have been taught in the course's lectures. 
+            In addition, we showcase and use a variety of programming tools and techniques.
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-info-circle me-2 text-primary"></i>Did You Know?</h5>
+              <p class="card-text">Data structures are fundamental concepts in computer science that enable efficient data organization and access. Mastering them is essential for algorithmic problem-solving.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum Section -->
+  <section id="curriculum" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Lab Curriculum</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title mb-3">
+                <i class="fas fa-code me-2 text-primary"></i>
+                Lab Sessions
+              </h5>
+              <div class="list-group">
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 0: Introductions and Git
+                  <span class="badge bg-primary rounded-pill">Basics</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 1: C Recap
+                  <span class="badge bg-primary rounded-pill">Review</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 2: Modules/Unit tests/Makefiles & Linked-lists
+                  <span class="badge bg-success rounded-pill">Essential</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 3: Vectors
+                  <span class="badge bg-success rounded-pill">Essential</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 4: Valgrind
+                  <span class="badge bg-warning text-dark rounded-pill">Tools</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 5: Binary Search Trees
+                  <span class="badge bg-info text-dark rounded-pill">Advanced</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 6: Hashtables
+                  <span class="badge bg-info text-dark rounded-pill">Advanced</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Lab 7: Bloom Filters
+                  <span class="badge bg-danger rounded-pill">Complex</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  Bonus: Generic Data Structures in C and C++
+                  <span class="badge bg-dark rounded-pill">Bonus</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-3">
+                <i class="fas fa-lightbulb me-2 text-warning"></i>
+                Why Study Data Structures?
+              </h5>
+              <p>Data structures are essential because they:</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent">Allow efficient data organization and retrieval</li>
+                <li class="list-group-item bg-transparent">Form the foundation of efficient algorithms</li>
+                <li class="list-group-item bg-transparent">Are fundamental to software development</li>
+                <li class="list-group-item bg-transparent">Optimize memory usage and execution time</li>
+                <li class="list-group-item bg-transparent">Are key topics in technical interviews</li>
+              </ul>
+              <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">Course Resources</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="py-5">
+    <div class="container">
+      <h2 class="section-title">Our Team</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="John Doe" class="team-img">
+              <h3 class="card-title">John Doe</h3>
+              <p class="card-subtitle mb-2 text-muted"><strong>Years of Service:</strong> 3</p>
+              <p class="quote">"Teaching is the best way to learn."</p>
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Jane Smith" class="team-img">
+              <h3 class="card-title">Jane Smith</h3>
+              <p class="card-subtitle mb-2 text-muted"><strong>Years of Service:</strong> 5</p>
+              <p class="quote">"A great teacher inspires curiosity in students."</p>
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Mark Lee" class="team-img">
+              <h3 class="card-title">Mark Lee</h3>
+              <p class="card-subtitle mb-2 text-muted"><strong>Years of Service:</strong> 2</p>
+              <p class="quote">"In data structures, the simplicity of an idea can unlock immense power."</p>
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="btn btn-sm btn-outline-primary mx-1"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- You can add more team members here, they will automatically flow into new rows with 3 per row -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Former Team Section -->
+  <section id="former-team" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Former Team Members</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="John Doe" class="team-img">
+              <h3 class="card-title">John Doe</h3>
+              <p class="card-subtitle mb-2 text-muted"><strong>Years of Service:</strong> 3</p>
+              <p class="quote">"Teaching is the best way to learn."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Jane Smith" class="team-img">
+              <h3 class="card-title">Jane Smith</h3>
+              <p class="card-subtitle mb-2 text-muted"><strong>Years of Service:</strong> 5</p>
+              <p class="quote">"A great teacher inspires curiosity in students."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <img src="https://www.madgik.di.uoa.gr/sites/default/files/default_images/placeholder_person.jpg" alt="Mark Lee" class="team-img">
+              <h3 class="card-title">Mark Lee</h3>
+              <p class="card-subtitle mb-2 text-muted"><strong>Years of Service:</strong> 2</p>
+              <p class="quote">"In data structures, the simplicity of an idea can unlock immense power."</p>
+            </div>
+          </div>
+        </div>
+        <!-- You can add more former team members here, they will automatically flow into new rows with 3 per row -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Data Structures Lab</h5>
+          <p>Department of Informatics and Telecommunications</p>
+          <p>University of Athens</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <h5>Connect With Us</h5>
+          <div class="d-inline-block">
+            <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-github"></i></a>
+            <a href="#" class="btn btn-outline-light me-2"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="btn btn-outline-light"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-4 mb-4 bg-light">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">&copy; 2025 Data Structures Lab. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
