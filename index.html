@@ -10,8 +10,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: #f8f9fa;
+      line-height: 1.6;
+      color: #333;
     }
     .hero-section {
       background-color: #343a40;
@@ -41,11 +43,13 @@
       transition: transform 0.3s, box-shadow 0.3s;
       margin-bottom: 1.5rem;
       border: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
     .team-img {
       width: 150px;
@@ -61,25 +65,232 @@
       color: #6c757d;
     }
     .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
       position: relative;
+      font-weight: 700;
+      color: #2c3e50;
       display: inline-block;
       padding-bottom: 10px;
-      margin-bottom: 1.5rem;
     }
     .section-title::after {
       content: '';
-      position: absolute;
-      width: 50px;
-      height: 3px;
-      background-color: #007bff;
-      bottom: 0;
-      left: 0;
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #4a6cf7, #9770fb);
+      margin: 12px 0 0;
+      border-radius: 2px;
     }
+    
+    /* Card styling */
+    .card-body {
+      padding: 1.75rem;
+    }
+    
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #f5f5f5;
+      padding-bottom: 1rem;
+    }
+    
+    .card-title i {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+    
+    /* Lab list styling */
+    .list-group {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
     .list-group-item {
-      border-left: 3px solid #007bff;
+      border-left: none;
+      border-right: none;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.2s;
+      border-color: #f0f0f0;
       margin-bottom: 5px;
       border-radius: 0.25rem;
     }
+    
+    .list-group-item:first-child {
+      border-top: none;
+    }
+    
+    .list-group-item:last-child {
+      border-bottom: none;
+    }
+    
+    .list-group-item:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .lab-name {
+      flex: 1;
+    }
+    
+    .tags-container {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    
+    /* Badge styling */
+    .badge {
+      padding: 6px 10px;
+      font-weight: 500;
+      font-size: 11px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .badge-basics {
+      background-color: #4a6cf7;
+      color: white;
+    }
+    
+    .badge-data-structures {
+      background-color: #10b981;
+      color: white;
+    }
+    
+    .badge-tools {
+      background-color: #f59e0b;
+      color: #1f2937;
+    }
+    
+    .badge-bonus {
+      background-color: #374151;
+      color: white;
+    }
+    
+    .badge-algorithms {
+      background-color: #ec4899;
+      color: white;
+    }
+    
+    /* Enhanced schedule styling */
+    .schedule-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .schedule-item {
+      display: flex;
+      align-items: center;
+      padding: 14px;
+      background: linear-gradient(145deg, #f8f9fa, #ffffff);
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 4px solid #4a6cf7;
+    }
+    
+    .schedule-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .schedule-item:nth-child(2) {
+      border-left-color: #10b981;
+    }
+    
+    .schedule-item:nth-child(3) {
+      border-left-color: #f59e0b;
+    }
+    
+    .schedule-item:nth-child(4) {
+      border-left-color: #ec4899;
+    }
+    
+    .schedule-item:nth-child(5) {
+      border-left-color: #6366f1;
+    }
+    
+    .schedule-day {
+      font-weight: 700;
+      color: #2c3e50;
+      width: 90px;
+    }
+    
+    .schedule-weekday {
+      flex: 1;
+      color: #4b5563;
+    }
+    
+    .schedule-time {
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: rgba(74, 108, 247, 0.1);
+      color: #4a6cf7;
+      font-size: 13px;
+    }
+    
+    .schedule-item:nth-child(2) .schedule-time {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+    }
+    
+    .schedule-item:nth-child(3) .schedule-time {
+      background: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+    }
+    
+    .schedule-item:nth-child(4) .schedule-time {
+      background: rgba(236, 72, 153, 0.1);
+      color: #ec4899;
+    }
+    
+    .schedule-item:nth-child(5) .schedule-time {
+      background: rgba(99, 102, 241, 0.1);
+      color: #6366f1;
+    }
+    
+    .location-icon {
+      margin-left: 8px;
+      display: inline-flex;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      border-radius: 12px;
+      background-color: rgba(99, 102, 241, 0.1);
+      color: #6366f1;
+    }
+    
+    /* Alert styling */
+    .alert {
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+      display: flex;
+      align-items: flex-start;
+      border: none;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    }
+    
+    .alert-info {
+      background-color: rgba(74, 108, 247, 0.1);
+      color: #4361ee;
+    }
+    
+    .alert i {
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    
     footer {
       background-color: #343a40;
       color: white;
@@ -161,14 +372,6 @@
             In addition, we showcase and use a variety of programming tools and techniques.
           </p>
         </div>
-        <div class="col-lg-4">
-          <div class="card bg-light">
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-info-circle me-2 text-primary"></i>Did You Know?</h5>
-              <p class="card-text">Data structures are fundamental concepts in computer science that enable efficient data organization and access. Mastering them is essential for algorithmic problem-solving.</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -181,46 +384,66 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title mb-3">
-                <i class="fas fa-code me-2 text-primary"></i>
+              <h5 class="card-title">
+                <i class="fas fa-code text-primary"></i>
                 Lab Sessions
               </h5>
               <div class="list-group">
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 0: Introductions and Git
-                  <span class="badge bg-primary rounded-pill">Basics</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 0: Introductions and Git</div>
+                  <div class="tags-container">
+                    <span class="badge badge-basics">Basics</span>
+                    <span class="badge badge-tools">Tools</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 1: C Recap
-                  <span class="badge bg-primary rounded-pill">Review</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 1: C Recap</div>
+                  <div class="tags-container">
+                    <span class="badge badge-basics">Basics</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 2: Modules/Unit tests/Makefiles & Linked-lists
-                  <span class="badge bg-success rounded-pill">Essential</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 2: Modules/Unit tests/Makefiles & Linked-lists</div>
+                  <div class="tags-container">
+                    <span class="badge badge-data-structures">Data Structures</span>
+                    <span class="badge badge-tools">Tools</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 3: Vectors
-                  <span class="badge bg-success rounded-pill">Essential</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 3: Vectors</div>
+                  <div class="tags-container">
+                    <span class="badge badge-data-structures">Data Structures</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 4: Valgrind
-                  <span class="badge bg-warning text-dark rounded-pill">Tools</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 4: Valgrind</div>
+                  <div class="tags-container">
+                    <span class="badge badge-tools">Tools</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 5: Binary Search Trees
-                  <span class="badge bg-info text-dark rounded-pill">Advanced</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 5: Binary Search Trees</div>
+                  <div class="tags-container">
+                    <span class="badge badge-data-structures">Data Structures</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 6: Hashtables
-                  <span class="badge bg-info text-dark rounded-pill">Advanced</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 6: Hashtables</div>
+                  <div class="tags-container">
+                    <span class="badge badge-data-structures">Data Structures</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Lab 7: Bloom Filters
-                  <span class="badge bg-danger rounded-pill">Complex</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Lab 7: Bloom Filters</div>
+                  <div class="tags-container">
+                    <span class="badge badge-data-structures">Data Structures</span>
+                  </div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  Bonus: Generic Data Structures in C and C++
-                  <span class="badge bg-dark rounded-pill">Bonus</span>
+                <div class="list-group-item">
+                  <div class="lab-name">Bonus: Generic Data Structures in C and C++</div>
+                  <div class="tags-container">
+                    <span class="badge badge-bonus">Bonus</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -229,20 +452,47 @@
         <div class="col-md-6">
           <div class="card h-100">
             <div class="card-body">
-              <h5 class="card-title mb-3">
-                <i class="fas fa-lightbulb me-2 text-warning"></i>
-                Why Study Data Structures?
+              <h5 class="card-title">
+                <i class="fas fa-calendar-alt text-success"></i>
+                Lab Schedule
               </h5>
-              <p>Data structures are essential because they:</p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item bg-transparent">Allow efficient data organization and retrieval</li>
-                <li class="list-group-item bg-transparent">Form the foundation of efficient algorithms</li>
-                <li class="list-group-item bg-transparent">Are fundamental to software development</li>
-                <li class="list-group-item bg-transparent">Optimize memory usage and execution time</li>
-                <li class="list-group-item bg-transparent">Are key topics in technical interviews</li>
-              </ul>
-              <div class="text-center mt-4">
-                <a href="#" class="btn btn-outline-primary">Course Resources</a>
+              <div class="schedule-container">
+                <div class="schedule-item">
+                  <span class="schedule-day">Group 1</span>
+                  <span class="schedule-weekday">Tuesday</span>
+                  <span class="schedule-time">09:00-11:00</span>
+                  <span class="location-icon"><i class="fas fa-map-marker-alt"></i>Linux Lab</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Group 2</span>
+                  <span class="schedule-weekday">Tuesday</span>
+                  <span class="schedule-time">11:00-13:00</span>
+                  <span class="location-icon"><i class="fas fa-map-marker-alt"></i>Linux Lab</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Group 3</span>
+                  <span class="schedule-weekday">Wednesday</span>
+                  <span class="schedule-time">09:00-11:00</span>
+                  <span class="location-icon"><i class="fas fa-map-marker-alt"></i>Linux Lab</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Group 4</span>
+                  <span class="schedule-weekday">Wednesday</span>
+                  <span class="schedule-time">11:00-13:00</span>
+                  <span class="location-icon"><i class="fas fa-map-marker-alt"></i>Linux Lab</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Group 5</span>
+                  <span class="schedule-weekday">Thursday</span>
+                  <span class="schedule-time">13:00-15:00</span>
+                  <span class="location-icon"><i class="fas fa-map-marker-alt"></i>Linux Lab</span>
+                </div>
+              </div>
+              <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                  Please attend the lab session assigned to your group. If you need to change groups, contact your instructor at least 24 hours in advance.
+                </div>
               </div>
             </div>
           </div>
